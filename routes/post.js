@@ -34,8 +34,8 @@ router.post("/my-posts", verifyToken, (req,res)=>{
   .catch((err)=>res.json(err))
 })
 
-router.post("/delete-post", (req, res) => {
-  const { id } = req.body;
+router.post("/delete-blog/:id", (req, res) => {
+  const { id } = req.params; 
   Post.findByIdAndDelete(id)
   .then(() => res.json({ success: "Post deleted" }))
   .catch((err) => res.json(err));  
